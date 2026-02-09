@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Layer {
+  id        String  @id @default(cuid())
+  name      String
+  type      String  // FRAME | GROUP | TEXT | RECTANGLE | ELLIPSE | COMPONENT | IMAGE
+  parentId  String?
+  parent    Layer?  @relation("LayerChildren", fields: [parentId], references: [id])
+  children  Layer[] @relation("LayerChildren")
+  depth     Int     @default(0)
+  sortOrder Int     @default(0)
+  visible   Boolean @default(true)
+  locked    Boolean @default(false)
+  expanded  Boolean @default(true)
+
+  @@index([parentId])
+  @@index([sortOrder])
+}

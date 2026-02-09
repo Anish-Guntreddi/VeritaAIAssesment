@@ -1,26 +1,46 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-figma-bg: #1e1e1e;
+  --color-figma-bg-secondary: #252525;
+  --color-figma-bg-hover: rgba(255, 255, 255, 0.06);
+  --color-figma-bg-selected: rgba(13, 153, 255, 0.2);
+  --color-figma-bg-selected-hover: rgba(13, 153, 255, 0.3);
+  --color-figma-border: #333333;
+  --color-figma-text: #e0e0e0;
+  --color-figma-text-secondary: #999999;
+  --color-figma-text-disabled: #5a5a5a;
+  --color-figma-icon: #b0b0b0;
+  --color-figma-icon-hover: #e0e0e0;
+  --color-figma-blue: #0d99ff;
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--color-figma-bg);
+  color: var(--color-figma-text);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+}
+
+/* Custom scrollbar matching Figma's dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
